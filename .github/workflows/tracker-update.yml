@@ -1,0 +1,70 @@
+name: Tracker Update
+
+on:
+  schedule:
+    - cron: '*/5 * * * 1-5'
+    - cron: '0 12 1 * *'
+  workflow_dispatch:
+
+jobs:
+  keepalive:
+    if: github.event.schedule == '0 12 1 * *'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Keepalive commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          date -u > .keepalive
+          git add .keepalive
+          git commit -m "keepalive $(date -u +%Y-%m)" || true
+          git push
+
+  update:
+    if: github.event.schedule != '0 12 1 * *' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check market hours (ET) and ping tracker
+        env:
+          RENDER_URL: ${{ secrets.RENDER_URL }}
+          TRACKER_TOKEN: ${{ secrets.TRACKER_TOKEN }}
+        run: |
+          # Get current hour in ET
+          ET_HOUR=$(TZ=America/New_York date +%H)
+          ET_MIN=$(TZ=America/New_York date +%M)
+          ET_TIME="${ET_HOUR}:${ET_MIN}"
+
+          # Only run 9:25 AM - 5:05 PM ET (market hours with small buffer)
+          if [ "$ET_HOUR" -lt 9 ] || [ "$ET_HOUR" -ge 18 ]; then
+            echo "Outside market hours ($ET_TIME ET), skipping."
+            exit 0
+          fi
+          if [ "$ET_HOUR" -eq 9 ] && [ "$ET_MIN" -lt 25 ]; then
+            echo "Pre-market ($ET_TIME ET), skipping."
+            exit 0
+          fi
+
+          echo "Market hours ($ET_TIME ET), updating tracker..."
+          HTTP_CODE=$(curl -s -o /tmp/response.json -w "%{http_code}" \
+            "${RENDER_URL}/tracker-update?token=${TRACKER_TOKEN}" \
+            --max-time 60)
+
+          if [ "$HTTP_CODE" = "200" ]; then
+            echo "Tracker updated successfully."
+            # Show pick count if available
+            cat /tmp/response.json | python3 -c "
+          import sys, json
+          try:
+              d = json.load(sys.stdin)
+              u = d.get('update', {})
+              print(f\"Updated {u.get('updated_picks', '?')} picks, {u.get('missing_prices', 0)} missing prices\")
+          except: pass
+          " 2>/dev/null || true
+          else
+            echo "Tracker update returned HTTP $HTTP_CODE"
+            cat /tmp/response.json 2>/dev/null || true
+            exit 1
+          fi
