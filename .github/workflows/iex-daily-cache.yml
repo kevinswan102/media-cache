@@ -1,0 +1,76 @@
+name: IEX Daily Cache
+
+on:
+  schedule:
+    # IEX HIST is T+1. Run after the catalog has published the latest file.
+    - cron: "30 10 * * 2-6"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "IEX trading date (YYYYMMDD); blank uses latest TOPS v1.6"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: iex-daily-cache
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned IEX parser
+        run: python -m pip install --disable-pip-version-check iex-parser==1.7.0
+
+      - name: Stream IEX HIST into compact cache
+        env:
+          IEX_DATE: ${{ inputs.date }}
+        run: |
+          python scripts/iex_hist_daily_cache.py \
+            --date "${IEX_DATE}" \
+            --universe data/coverage_universe.json \
+            --output data/iex_hist_latest.json \
+            --report data/iex_hist_coverage_report.json
+
+      - name: Validate compact cache
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          cache = json.loads(Path("data/iex_hist_latest.json").read_text())
+          report = json.loads(Path("data/iex_hist_coverage_report.json").read_text())
+          rows = cache.get("symbols", {})
+          if not rows:
+              raise SystemExit("IEX cache is empty")
+          if cache.get("source") != "iex_hist":
+              raise SystemExit("unexpected cache source")
+          if "IEX Historical Data Terms" not in cache.get("attribution", ""):
+              raise SystemExit("required IEX attribution missing")
+          print(f"validated {len(rows)} IEX daily rows")
+          for label, coverage in report["coverage"].items():
+              print(label, coverage["iex_hist_rows"], "/", coverage["requested"])
+          PY
+
+      - name: Commit compact cache and coverage report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/iex_hist_latest.json data/iex_hist_coverage_report.json
+          if git diff --cached --quiet; then
+            echo "No cache change to commit."
+            exit 0
+          fi
+          git commit -m "Update IEX daily cache"
+          git push
