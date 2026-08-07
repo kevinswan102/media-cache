@@ -2,26 +2,36 @@
   "cache_output": "data/iex_hist_latest.json",
   "coverage": {
     "sp400": {
+      "hf_metadata": 72,
+      "hf_plus_iex": 399,
+      "iex_additions_over_hf": 327,
       "iex_hist_rows": 399,
       "iex_missing": [
+        "MOG-A"
+      ],
+      "missing_both": [
         "MOG-A"
       ],
       "requested": 400
     },
     "sp500": {
+      "hf_metadata": 444,
+      "hf_plus_iex": 500,
+      "iex_additions_over_hf": 56,
       "iex_hist_rows": 497,
       "iex_missing": [
         "BF-B",
         "BRK-B",
         "EA"
       ],
+      "missing_both": [],
       "requested": 500
     }
   },
-  "date": "20260805",
-  "feed_size_bytes": 12843120370,
-  "generated_at_utc": "2026-08-06T12:43:21.424177+00:00",
-  "hf_symbol_metadata_error": "HTTP Error 500: Internal Server Error",
+  "date": "20260806",
+  "feed_size_bytes": 13259943864,
+  "generated_at_utc": "2026-08-07T11:43:06.416993+00:00",
+  "hf_symbol_metadata_error": null,
   "method": "last-sale trade reports with official IEX close; venue-only",
   "source": "IEX HIST TOPS v1.6",
   "symbols_with_iex_rows": [
