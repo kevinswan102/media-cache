@@ -14,3 +14,17 @@ signals.
 
 IEX data is venue-only and the cache retains the required attribution from the
 [IEX Historical Data Terms](https://www.iex.io/legal/hist-data-terms).
+
+The same weekday run also publishes two small, source-safe operational files:
+
+- `data/public_macro_latest.json` caches normalized BLS and U.S. Treasury
+  Fiscal Data values. It contains no API keys, customer data, trading state,
+  proprietary identifiers, or unreleased picks. Downstream clients validate
+  freshness and fall back to the agencies directly.
+- `data/cache_health.json` summarizes artifact timestamps and IEX universe
+  coverage without duplicating the price rows.
+
+Keeping these updates in the existing IEX workflow adds no second schedule or
+runner allocation. Private application code, paid API payloads, restricted
+vendor data, alerts, and trading jobs deliberately remain outside this public
+repository.

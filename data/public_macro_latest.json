@@ -1,0 +1,64 @@
+{
+  "attribution": [
+    {
+      "name": "U.S. Bureau of Labor Statistics",
+      "url": "https://www.bls.gov/developers/"
+    },
+    {
+      "name": "U.S. Treasury Fiscal Data",
+      "url": "https://fiscaldata.treasury.gov/api-documentation/"
+    }
+  ],
+  "bls": {
+    "last_updated": "2026-08-14T02:08:43.588412+00:00",
+    "message": [],
+    "series": {
+      "cpi_all_urban_sa": {
+        "period": "July",
+        "period_change_pct": 0.074,
+        "prior_value": 332.568,
+        "value": 332.813,
+        "year": "2026"
+      },
+      "nonfarm_payrolls": {
+        "period": "July",
+        "period_change_pct": -0.014,
+        "prior_value": 158881.0,
+        "value": 158858.0,
+        "year": "2026"
+      },
+      "ppi_final_demand": {
+        "period": "July",
+        "period_change_pct": -0.028,
+        "prior_value": 156.607,
+        "value": 156.563,
+        "year": "2026"
+      },
+      "unemployment_rate": {
+        "period": "July",
+        "period_change_pct": -2.381,
+        "prior_value": 4.2,
+        "value": 4.1,
+        "year": "2026"
+      }
+    },
+    "source": "BLS Public Data API",
+    "status": "ok"
+  },
+  "generated_at": "2026-08-14T02:08:43.588412+00:00",
+  "schema_version": 1,
+  "source": "us_federal_public_data",
+  "sources_ok": [
+    "bls",
+    "treasury"
+  ],
+  "status": "ok",
+  "treasury": {
+    "avg_interest_rate_amt": 3.758,
+    "last_updated": "2026-08-14T02:08:43.588412+00:00",
+    "record_date": "2026-07-31",
+    "security_desc": "Treasury Bills",
+    "source": "Treasury Fiscal Data API",
+    "status": "ok"
+  }
+}
