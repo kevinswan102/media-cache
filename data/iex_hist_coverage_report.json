@@ -18,8 +18,9 @@
       "hf_metadata": 444,
       "hf_plus_iex": 500,
       "iex_additions_over_hf": 56,
-      "iex_hist_rows": 497,
+      "iex_hist_rows": 496,
       "iex_missing": [
+        "AVB",
         "BF-B",
         "BRK-B",
         "EA"
@@ -28,9 +29,9 @@
       "requested": 500
     }
   },
-  "date": "20260814",
-  "feed_size_bytes": 9139208735,
-  "generated_at_utc": "2026-08-15T11:08:54.814132+00:00",
+  "date": "20260817",
+  "feed_size_bytes": 8582638027,
+  "generated_at_utc": "2026-08-18T11:15:09.506288+00:00",
   "hf_symbol_metadata_error": null,
   "method": "last-sale trade reports with official IEX close; venue-only",
   "source": "IEX HIST TOPS v1.6",
@@ -112,7 +113,6 @@
     "ATO",
     "ATR",
     "AVAV",
-    "AVB",
     "AVGO",
     "AVNT",
     "AVT",
