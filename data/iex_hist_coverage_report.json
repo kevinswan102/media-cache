@@ -32,9 +32,9 @@
       "requested": 500
     }
   },
-  "date": "20260828",
-  "feed_size_bytes": 12513529656,
-  "generated_at_utc": "2026-08-29T15:37:19.897381+00:00",
+  "date": "20260831",
+  "feed_size_bytes": 9147529516,
+  "generated_at_utc": "2026-09-01T15:24:45.972333+00:00",
   "hf_symbol_metadata_error": null,
   "method": "last-sale trade reports with official IEX close; venue-only",
   "source": "IEX HIST TOPS v1.6",
