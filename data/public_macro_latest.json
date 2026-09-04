@@ -10,7 +10,7 @@
     }
   ],
   "bls": {
-    "last_updated": "2026-09-03T15:01:28.964261+00:00",
+    "last_updated": "2026-09-04T14:51:52.450675+00:00",
     "message": [],
     "series": {
       "cpi_all_urban_sa": {
@@ -21,10 +21,10 @@
         "year": "2026"
       },
       "nonfarm_payrolls": {
-        "period": "July",
-        "period_change_pct": -0.014,
-        "prior_value": 158881.0,
-        "value": 158858.0,
+        "period": "August",
+        "period_change_pct": 0.102,
+        "prior_value": 158913.0,
+        "value": 159075.0,
         "year": "2026"
       },
       "ppi_final_demand": {
@@ -35,9 +35,9 @@
         "year": "2026"
       },
       "unemployment_rate": {
-        "period": "July",
-        "period_change_pct": -2.381,
-        "prior_value": 4.2,
+        "period": "August",
+        "period_change_pct": 0.0,
+        "prior_value": 4.1,
         "value": 4.1,
         "year": "2026"
       }
@@ -45,7 +45,7 @@
     "source": "BLS Public Data API",
     "status": "ok"
   },
-  "generated_at": "2026-09-03T15:01:28.964261+00:00",
+  "generated_at": "2026-09-04T14:51:52.450675+00:00",
   "schema_version": 1,
   "source": "us_federal_public_data",
   "sources_ok": [
@@ -55,7 +55,7 @@
   "status": "ok",
   "treasury": {
     "avg_interest_rate_amt": 3.758,
-    "last_updated": "2026-09-03T15:01:28.964261+00:00",
+    "last_updated": "2026-09-04T14:51:52.450675+00:00",
     "record_date": "2026-07-31",
     "security_desc": "Treasury Bills",
     "source": "Treasury Fiscal Data API",
