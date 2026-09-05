@@ -10,7 +10,7 @@
     }
   ],
   "bls": {
-    "last_updated": "2026-09-04T14:51:52.450675+00:00",
+    "last_updated": "2026-09-05T13:51:35.303185+00:00",
     "message": [],
     "series": {
       "cpi_all_urban_sa": {
@@ -45,7 +45,7 @@
     "source": "BLS Public Data API",
     "status": "ok"
   },
-  "generated_at": "2026-09-04T14:51:52.450675+00:00",
+  "generated_at": "2026-09-05T13:51:35.303185+00:00",
   "schema_version": 1,
   "source": "us_federal_public_data",
   "sources_ok": [
@@ -54,9 +54,9 @@
   ],
   "status": "ok",
   "treasury": {
-    "avg_interest_rate_amt": 3.758,
-    "last_updated": "2026-09-04T14:51:52.450675+00:00",
-    "record_date": "2026-07-31",
+    "avg_interest_rate_amt": 3.788,
+    "last_updated": "2026-09-05T13:51:35.303185+00:00",
+    "record_date": "2026-08-31",
     "security_desc": "Treasury Bills",
     "source": "Treasury Fiscal Data API",
     "status": "ok"
