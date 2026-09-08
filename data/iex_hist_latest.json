@@ -33,7 +33,7 @@
       "requested": 500
     }
   },
-  "generated_at": "2026-09-05T13:51:35.187658+00:00",
+  "generated_at": "2026-09-08T15:01:52.462080+00:00",
   "limitations": "Daily/T+1 IEX venue reference data; not live and not consolidated. This file contains one day; it must be accumulated or merged with a longer history before 52-week signals are used.",
   "schema_version": 1,
   "source": "iex_hist",
