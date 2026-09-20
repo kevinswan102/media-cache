@@ -1,0 +1,65 @@
+# Web framework
+flask==3.1.3
+gunicorn==25.3.0
+werkzeug==3.1.8
+
+# Environment & system
+python-dotenv==1.2.2
+psutil==7.2.2
+
+# Market data
+yfinance==1.3.0
+textblob==0.20.0
+# NLTK's TweetTokenizer imports this directly; keep CI's cached venv honest.
+regex==2026.1.15
+finnhub-python==2.4.28
+alpha_vantage==3.0.0
+
+# AI
+openai==2.20.0
+
+# Video processing
+moviepy==1.0.3
+imageio==2.37.3
+imageio-ffmpeg==0.6.0
+
+# Text-to-speech
+google-cloud-texttospeech==2.36.0
+edge-tts==7.2.8
+faster-whisper==1.2.1  # forced word-alignment for caption sync (Google TTS has no timepointing)
+# pydub removed — incompatible with Python 3.13 (audioop module dropped)
+
+# Audio/signal processing (used by background music system)
+scipy==1.15.3
+
+# Google / YouTube APIs
+google-auth-oauthlib==1.3.1
+google-auth-httplib2==0.3.1
+google-api-python-client==2.194.0
+
+# X (Twitter) auto-posting
+tweepy==4.16.0
+
+# Billing
+stripe==15.3.0
+
+# Kalshi API auth (RSA-PSS signing)
+cryptography==50.0.0
+
+# Data & plotting
+numpy==1.26.4
+pandas==3.0.2
+pyarrow==25.0.0  # HF signed daily fallback may be delivered as Parquet
+matplotlib==3.10.8
+Pillow==12.3.0
+
+# Utilities
+requests==2.33.0
+pyyaml==6.0.3
+proglog==0.1.12
+tqdm==4.67.3
+urllib3==2.7.0
+python-dateutil==2.9.0.post0
+schedule==1.2.2
+fonttools==4.62.1
+lxml==6.1.0

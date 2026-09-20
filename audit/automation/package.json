@@ -1,0 +1,24 @@
+{
+  "name": "top5-watchlists-automation",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:site-css": "tailwindcss -i ./site/assets/css/top5-template.css -o ./site/css/flowbite.css --minify",
+    "dev:site": "netlify dev --dir site --port 4173 --no-open",
+    "dev": "npm run dev:site",
+    "serve": "npm run dev:site",
+    "start": "npm run dev:site"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0",
+    "flowbite": "^3.1.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.2",
+    "chart.js": "^4.5.1",
+    "chartjs-adapter-date-fns": "^3.0.0",
+    "date-fns": "^4.4.0",
+    "playwright": "^1.60.0",
+    "tailwindcss": "^4.3.2"
+  }
+}

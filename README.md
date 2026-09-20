@@ -2,6 +2,11 @@
 Static media cache.
 This repository is a static media cache.
 
+The `audit/automation/` directory mirrors dependency manifests only (no source,
+secrets, customer data, or trading data) so the weekly security audit can use
+public-repository Actions minutes. The private AUTOMATION workflow verifies
+that these mirrors match before auditing dependency changes.
+
 The `IEX Daily Cache` workflow streams one IEX HIST TOPS file through a FIFO,
 keeps no raw PCAP, and commits only a compact one-day OHLCV cache plus a
 coverage report. It filters to the configured S&P 500 + MidCap 400 universe
