@@ -1,7 +1,7 @@
 {
   "artifacts": {
     "iex_hist_latest.json": {
-      "as_of_date": "20260921",
+      "as_of_date": "20260922",
       "coverage": {
         "sp400": {
           "requested": 400,
@@ -12,12 +12,12 @@
           "rows": 495
         }
       },
-      "generated_at": "2026-09-22T15:29:31.137790+00:00",
+      "generated_at": "2026-09-23T15:28:22.688435+00:00",
       "status": "ok",
       "symbol_count": 893
     },
     "public_macro_latest.json": {
-      "generated_at": "2026-09-22T15:29:31.245825+00:00",
+      "generated_at": "2026-09-23T15:28:22.770916+00:00",
       "sources_ok": [
         "bls",
         "treasury"
@@ -25,7 +25,7 @@
       "status": "ok"
     }
   },
-  "generated_at": "2026-09-22T15:29:32.459252+00:00",
+  "generated_at": "2026-09-23T15:28:23.730630+00:00",
   "schema_version": 1,
   "status": "ok"
 }
