@@ -18,23 +18,28 @@
     },
     "sp500": {
       "hf_metadata": 444,
-      "hf_plus_iex": 500,
-      "iex_additions_over_hf": 56,
-      "iex_hist_rows": 495,
+      "hf_plus_iex": 498,
+      "iex_additions_over_hf": 54,
+      "iex_hist_rows": 493,
       "iex_missing": [
         "AVB",
         "BF-B",
         "BRK-B",
         "EA",
-        "EQR"
+        "EQR",
+        "PSKY",
+        "WBD"
       ],
-      "missing_both": [],
+      "missing_both": [
+        "PSKY",
+        "WBD"
+      ],
       "requested": 500
     }
   },
-  "date": "20261005",
-  "feed_size_bytes": 9516111227,
-  "generated_at_utc": "2026-10-06T17:14:46.357927+00:00",
+  "date": "20261006",
+  "feed_size_bytes": 9205312366,
+  "generated_at_utc": "2026-10-07T17:51:12.975717+00:00",
   "hf_symbol_metadata_error": null,
   "method": "last-sale trade reports with official IEX close; venue-only",
   "source": "IEX HIST TOPS v1.6",
@@ -697,7 +702,6 @@
     "PRI",
     "PRU",
     "PSA",
-    "PSKY",
     "PSN",
     "PSX",
     "PTC",
@@ -893,7 +897,6 @@
     "WAB",
     "WAL",
     "WAT",
-    "WBD",
     "WCC",
     "WDAY",
     "WDC",
