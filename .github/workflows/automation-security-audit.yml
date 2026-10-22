@@ -45,8 +45,8 @@ jobs:
             audit/automation/cloudflare-worker/package-lock.json
       - name: Audit mirrored site tooling dependencies
         working-directory: audit/automation
-        run: npm audit --omit=dev --audit-level=moderate
+        run: npm audit --audit-level=moderate
       - name: Audit mirrored Cloudflare Worker dependencies
         if: ${{ !cancelled() }}
         working-directory: audit/automation/cloudflare-worker
-        run: npm audit --omit=dev --audit-level=moderate
+        run: npm audit --audit-level=moderate
