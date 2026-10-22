@@ -24,11 +24,13 @@ jobs:
           cache-dependency-path: |
             audit/automation/requirements.txt
             audit/automation/requirements-kalshi.txt
+      - name: Install Python audit tool
+        run: python -m pip install --upgrade pip-audit
       - name: Audit mirrored Python runtime dependencies
-        run: |
-          python -m pip install --upgrade pip-audit
-          python -m pip_audit -r audit/automation/requirements.txt
-          python -m pip_audit -r audit/automation/requirements-kalshi.txt
+        run: python -m pip_audit -r audit/automation/requirements.txt
+      - name: Audit mirrored Kalshi runtime dependencies
+        if: ${{ !cancelled() }}
+        run: python -m pip_audit -r audit/automation/requirements-kalshi.txt
 
   javascript:
     runs-on: ubuntu-latest

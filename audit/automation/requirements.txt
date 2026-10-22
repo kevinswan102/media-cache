@@ -51,7 +51,7 @@ numpy==1.26.4
 pandas==3.0.2
 pyarrow==25.0.0  # HF signed daily fallback may be delivered as Parquet
 matplotlib==3.10.8
-Pillow==12.3.0
+Pillow==13.0.0
 
 # Utilities
 requests==2.33.0
