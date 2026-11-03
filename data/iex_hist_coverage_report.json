@@ -18,28 +18,30 @@
     },
     "sp500": {
       "hf_metadata": 444,
-      "hf_plus_iex": 498,
-      "iex_additions_over_hf": 54,
-      "iex_hist_rows": 493,
+      "hf_plus_iex": 497,
+      "iex_additions_over_hf": 53,
+      "iex_hist_rows": 492,
       "iex_missing": [
         "AVB",
         "BF-B",
         "BRK-B",
         "EA",
         "EQR",
+        "KVUE",
         "PSKY",
         "WBD"
       ],
       "missing_both": [
+        "KVUE",
         "PSKY",
         "WBD"
       ],
       "requested": 500
     }
   },
-  "date": "20261030",
-  "feed_size_bytes": 13900622934,
-  "generated_at_utc": "2026-10-31T16:19:37.578784+00:00",
+  "date": "20261102",
+  "feed_size_bytes": 14613193648,
+  "generated_at_utc": "2026-11-03T18:16:23.584374+00:00",
   "hf_symbol_metadata_error": null,
   "method": "last-sale trade reports with official IEX close; venue-only",
   "source": "IEX HIST TOPS v1.6",
@@ -516,7 +518,6 @@
     "KRG",
     "KRYS",
     "KTOS",
-    "KVUE",
     "L",
     "LAD",
     "LAMR",
