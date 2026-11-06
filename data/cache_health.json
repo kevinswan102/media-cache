@@ -12,12 +12,12 @@
           "rows": 492
         }
       },
-      "generated_at": "2026-11-05T18:42:05.984572+00:00",
+      "generated_at": "2026-11-06T18:12:37.520404+00:00",
       "status": "ok",
       "symbol_count": 890
     },
     "public_macro_latest.json": {
-      "generated_at": "2026-11-05T18:42:06.079009+00:00",
+      "generated_at": "2026-11-06T18:12:37.618677+00:00",
       "sources_ok": [
         "bls",
         "treasury"
@@ -25,7 +25,7 @@
       "status": "ok"
     }
   },
-  "generated_at": "2026-11-05T18:42:07.769918+00:00",
+  "generated_at": "2026-11-06T18:12:39.241170+00:00",
   "schema_version": 1,
   "status": "ok"
 }
