@@ -3,15 +3,18 @@
   "coverage": {
     "sp400": {
       "hf_metadata": 72,
-      "hf_plus_iex": 398,
-      "iex_additions_over_hf": 326,
-      "iex_hist_rows": 398,
+      "hf_plus_iex": 397,
+      "iex_additions_over_hf": 325,
+      "iex_hist_rows": 396,
       "iex_missing": [
         "MOG-A",
+        "ROKU",
+        "TCBI",
         "WBS"
       ],
       "missing_both": [
         "MOG-A",
+        "TCBI",
         "WBS"
       ],
       "requested": 400
@@ -39,9 +42,9 @@
       "requested": 500
     }
   },
-  "date": "20261106",
-  "feed_size_bytes": 15860279323,
-  "generated_at_utc": "2026-11-07T17:00:25.286634+00:00",
+  "date": "20261109",
+  "feed_size_bytes": 10990978145,
+  "generated_at_utc": "2026-11-10T18:27:57.639631+00:00",
   "hf_symbol_metadata_error": null,
   "method": "last-sale trade reports with official IEX close; venue-only",
   "source": "IEX HIST TOPS v1.6",
@@ -732,7 +735,6 @@
     "RNR",
     "ROIV",
     "ROK",
-    "ROKU",
     "ROL",
     "ROP",
     "ROST",
@@ -807,7 +809,6 @@
     "SYY",
     "T",
     "TAP",
-    "TCBI",
     "TDG",
     "TDY",
     "TECH",
