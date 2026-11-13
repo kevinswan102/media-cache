@@ -10,22 +10,52 @@
     }
   ],
   "bls": {
-    "error": "HTTPError: HTTP Error 503: Service Unavailable",
-    "last_updated": "2026-11-12T18:45:06.766921+00:00",
-    "series": {},
+    "last_updated": "2026-11-13T18:23:09.990430+00:00",
+    "message": [],
+    "series": {
+      "cpi_all_urban_sa": {
+        "period": "October",
+        "period_change_pct": 0.35,
+        "prior_value": 336.298,
+        "value": 337.476,
+        "year": "2026"
+      },
+      "nonfarm_payrolls": {
+        "period": "October",
+        "period_change_pct": 0.104,
+        "prior_value": 159128.0,
+        "value": 159293.0,
+        "year": "2026"
+      },
+      "ppi_final_demand": {
+        "period": "October",
+        "period_change_pct": 0.348,
+        "prior_value": 159.699,
+        "value": 160.254,
+        "year": "2026"
+      },
+      "unemployment_rate": {
+        "period": "October",
+        "period_change_pct": -2.381,
+        "prior_value": 4.2,
+        "value": 4.1,
+        "year": "2026"
+      }
+    },
     "source": "BLS Public Data API",
-    "status": "unavailable"
+    "status": "ok"
   },
-  "generated_at": "2026-11-12T18:45:06.766921+00:00",
+  "generated_at": "2026-11-13T18:23:09.990430+00:00",
   "schema_version": 1,
   "source": "us_federal_public_data",
   "sources_ok": [
+    "bls",
     "treasury"
   ],
-  "status": "partial",
+  "status": "ok",
   "treasury": {
     "avg_interest_rate_amt": 4.014,
-    "last_updated": "2026-11-12T18:45:06.766921+00:00",
+    "last_updated": "2026-11-13T18:23:09.990430+00:00",
     "record_date": "2026-10-31",
     "security_desc": "Treasury Bills",
     "source": "Treasury Fiscal Data API",
