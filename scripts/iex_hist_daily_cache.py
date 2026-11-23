@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import argparse
 import csv
-from datetime import datetime, timezone
+from datetime import date as date_cls, datetime, timedelta, timezone
 import gzip
 import json
 import os
@@ -36,6 +36,14 @@ IEX_ATTRIBUTION = (
     "you agree to the IEX Historical Data Terms of Use."
 )
 IEX_TERMS_URL = "https://www.iex.io/legal/hist-data-terms"
+# Public storage location of the same HIST files the catalog links to. Used
+# only when the catalog endpoint itself is refusing requests (it has returned
+# HTTP 403 since 2026-11-14 while the files stayed downloadable).
+DIRECT_FILE_URL = (
+    "https://www.googleapis.com/download/storage/v1/b/iex/o/"
+    "data%2Ffeeds%2F{date}%2F{date}_IEXTP1_TOPS1.6.pcap.gz?alt=media"
+)
+DIRECT_LOOKBACK_DAYS = 10
 
 
 def _get_json(url: str) -> Any:
@@ -79,6 +87,37 @@ def _load_universe(path: Path) -> dict[str, set[str]]:
     if not groups or not set().union(*groups.values()):
         raise ValueError("coverage universe is empty")
     return groups
+
+
+def _probe_size(url: str) -> int | None:
+    """Return Content-Length when the file exists, None otherwise."""
+    request = Request(url, method="HEAD", headers={"User-Agent": "Top5Stocks-IEX-Ingest/1.0"})
+    try:
+        with urlopen(request, timeout=60) as response:
+            if response.status != 200:
+                return None
+            return int(response.headers.get("Content-Length") or 0)
+    except Exception:
+        return None
+
+
+def _direct_entry(requested_date: str | None, today: date_cls, probe=_probe_size) -> dict[str, Any]:
+    """Locate the newest TOPS v1.6 file without the catalog (weekdays only)."""
+    if requested_date:
+        candidates = [requested_date]
+    else:
+        candidates = []
+        for back in range(1, DIRECT_LOOKBACK_DAYS + 1):
+            day = today - timedelta(days=back)
+            if day.weekday() < 5:
+                candidates.append(day.strftime("%Y%m%d"))
+    for day in candidates:
+        url = DIRECT_FILE_URL.format(date=day)
+        size = probe(url)
+        if size is not None:
+            return {"date": day, "feed": "TOPS", "version": "1.6", "protocol": "IEXTP1",
+                    "link": url, "size": size}
+    raise RuntimeError(f"No IEX TOPS v1.6 file found directly for {candidates}")
 
 
 def _choose_tops(catalog: dict[str, Any], requested_date: str | None) -> dict[str, Any]:
@@ -477,8 +516,14 @@ def _coverage(
 def run(args: argparse.Namespace) -> dict[str, Any]:
     groups = _load_universe(Path(args.universe))
     requested = set().union(*groups.values())
-    catalog = _get_json(args.catalog_url)
-    entry = _choose_tops(catalog, args.date or None)
+    catalog_error = None
+    try:
+        catalog = _get_json(args.catalog_url)
+        entry = _choose_tops(catalog, args.date or None)
+    except Exception as exc:
+        catalog_error = str(exc)
+        print(f"IEX catalog unavailable ({catalog_error}); locating file directly", file=sys.stderr)
+        entry = _direct_entry(args.date or None, datetime.now(timezone.utc).date())
 
     try:
         hf_symbols = _as_symbols(_get_json(args.hf_symbols_url))
@@ -526,6 +571,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "catalog_size_bytes": int(entry.get("size") or 0),
             "method": "FIFO streamed PCAP; filtered parser output; no raw PCAP retained",
             "hf_symbol_metadata_error": hf_error,
+            "catalog_error": catalog_error,
         },
     }
     output = Path(args.output)
