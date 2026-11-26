@@ -12,19 +12,20 @@
           "rows": 492
         }
       },
-      "generated_at": "2026-11-25T20:38:55.910756+00:00",
+      "generated_at": "2026-11-26T20:12:21.045399+00:00",
       "status": "ok",
       "symbol_count": 886
     },
     "public_macro_latest.json": {
-      "generated_at": "2026-11-25T20:38:56.014088+00:00",
+      "generated_at": "2026-11-26T20:12:21.128478+00:00",
       "sources_ok": [
-        "bls"
+        "bls",
+        "treasury"
       ],
-      "status": "partial"
+      "status": "ok"
     }
   },
-  "generated_at": "2026-11-25T20:39:26.800761+00:00",
+  "generated_at": "2026-11-26T20:12:22.073618+00:00",
   "schema_version": 1,
   "status": "ok"
 }

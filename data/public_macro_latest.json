@@ -10,7 +10,7 @@
     }
   ],
   "bls": {
-    "last_updated": "2026-11-25T20:38:56.014088+00:00",
+    "last_updated": "2026-11-26T20:12:21.128478+00:00",
     "message": [],
     "series": {
       "cpi_all_urban_sa": {
@@ -45,17 +45,20 @@
     "source": "BLS Public Data API",
     "status": "ok"
   },
-  "generated_at": "2026-11-25T20:38:56.014088+00:00",
+  "generated_at": "2026-11-26T20:12:21.128478+00:00",
   "schema_version": 1,
   "source": "us_federal_public_data",
   "sources_ok": [
-    "bls"
+    "bls",
+    "treasury"
   ],
-  "status": "partial",
+  "status": "ok",
   "treasury": {
-    "error": "TimeoutError: The read operation timed out",
-    "last_updated": "2026-11-25T20:38:56.014088+00:00",
+    "avg_interest_rate_amt": 4.014,
+    "last_updated": "2026-11-26T20:12:21.128478+00:00",
+    "record_date": "2026-10-31",
+    "security_desc": "Treasury Bills",
     "source": "Treasury Fiscal Data API",
-    "status": "unavailable"
+    "status": "ok"
   }
 }
